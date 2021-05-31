@@ -14,38 +14,40 @@ function genPassword() {
   //ask how many characters the password will be
   promptPassword = window.prompt("How many characters would you like your password to be? Please, choose between 8-128 characters.");
   
-  //check for correct character input
-  if (promptPassword > 7 && promptPassword < 129) {
-    var promptLower = window.confirm(
-      "Would you like to include lowercase letters?"
-    );
-    if (promptLower === true) {
-      Array.prototype.push.apply(passwordArr, lowerCaseArr); //includes item from lowercase array
-    }
+    //check for correct character input
+    if (promptPassword > 7 && promptPassword < 129) {
+      
+      var promptLower = window.confirm("Would you like to include lowercase letters?");
+        //check for confirmation to include lowercase letters
+        if (promptLower) {
+          Array.prototype.push.apply(passwordArr, lowerCaseArr); //includes item from lowercase array
+        }
+      
+      var promptUpper = window.confirm("UPPERCASE LETTERS?");
+        //check for confirmation to include uppercase letters
+        if (promptUpper) {
+          Array.prototype.push.apply(passwordArr, upperCaseArr); //includes item from uppercase array
+        }
 
-    var promptUpper = window.confirm("UPPERCASE LETTERS?");
-    if (promptUpper === true) {
-      Array.prototype.push.apply(passwordArr, upperCaseArr); //includes item from uppercase array
-    }
+      var promptNumber = window.confirm("Would you like to include numbers?");
+        //check for confirmation to include numbers
+        if (promptNumber) {
+          Array.prototype.push.apply(passwordArr, numberArray); //includes item from number array 
+        }
 
-    var numberPrompt = window.confirm("Would you like to include numbers?");
-    if (numberPrompt === true) {
-      Array.prototype.push.apply(passwordArr, numberArray); //includes item from number array 
-    }
-
-    var symbolPrompt = window.confirm("Symbols?");
-    if (symbolPrompt === true) {
-      Array.prototype.push.apply(passwordArr, symbolArray);//includes item from symbol array 
-    }
+      var promptSymbol = window.confirm("Symbols?");
+        //check for confirmation to include symbols
+        if (promptSymbol) {
+          Array.prototype.push.apply(passwordArr, symbolArray);//includes item from symbol array 
+        }
 
     //checks for one type by ensuring length of array is at least 1 or more
     if (passwordArr.length === 0) {
-      window.alert(
-        "You must choose at least one type of character between lowercase, uppercase, numbers, and symbols. Please choose at least one."
-      );
+      window.alert("You must choose at least one type of character between lowercase, uppercase, numbers, and symbols. Please choose at least one.");
     } else {
       generatePass();
     }
+
   } else {
     window.alert("Invalid password. Please, try again");
     genPassword();
