@@ -14,7 +14,7 @@ function genPassword() {
   //ask how many characters the password will be
   promptPassword = window.prompt("How many characters would you like your password to be? Please, choose between 8-128 characters.");
   
-    //check for correct character input
+    //check for correct character length input
     if (promptPassword > 7 && promptPassword < 129) {
       
       var promptLower = window.confirm("Would you like to include lowercase letters?");
@@ -41,26 +41,33 @@ function genPassword() {
           Array.prototype.push.apply(passwordArr, symbolArray);//includes item from symbol array 
         }
 
-    //checks for one type by ensuring length of array is at least 1 or more
-    if (passwordArr.length === 0) {
-      window.alert("You must choose at least one type of character between lowercase, uppercase, numbers, and symbols. Please choose at least one.");
-    } else {
-      generatePass();
-    }
+      //if no types of characters are chosen, generate error message
+      if (passwordArr.length === 0) {
+        window.alert("You must choose at least one type of character between lowercase, uppercase, numbers, and symbols. Please choose at least one.");
+      }
+      //at least one type is chosen run function
+      else {
+        generatePass();
+      }
 
-  } else {
-    window.alert("Invalid password. Please, try again");
-    genPassword();
-  }
+    }
+    //incorrect length inputted, generate error message
+    else {
+      window.alert("Invalid password. Please, try again");
+      //give user another chance to enter
+      genPassword();
+    }
 }
 //function to generate random items for password
 function generatePass() {
   var randomPass = [];
+  
   for (let i = 0; i < promptPassword; i++) {
     var randomNum = Math.floor(Math.random() * passwordArr.length);
     var randomChar = passwordArr[randomNum];
     randomPass.push(randomChar);
   }
+  
   var passwordText = document.querySelector("#password");
   passwordText.innerHTML = "Your new password is " + randomPass.join("");
 }
