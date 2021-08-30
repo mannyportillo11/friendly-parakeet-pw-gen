@@ -1,4 +1,4 @@
-# Password Generator
+# Gen Pass - Password Generator
 
 ## **Client Requests**
 
@@ -26,4 +26,4 @@ Some users have access to important and sensitive material or data. The use of a
 
 ## **Link to Deployed Application**
 
-Check out the website by clicking here -> [Password Generator](https://mannyportillo11.github.io/friendly-parakeet-pw-gen/)
+[Gen Pass](https://mannyportillo11.github.io/genPass/)
